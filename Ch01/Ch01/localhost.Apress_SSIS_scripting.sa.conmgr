@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.Apress_SSIS_scripting.sa"
+  DTS:DTSID="{A9B1E1BB-939B-4DED-A32A-17555928E567}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=Apress_SSIS_scripting;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjPuJIh0GpUKcNk8l101IFAAAAAACAAAAAAAQZgAAAAEAACAAAABRz0dk5zZNxhyDdWfsdqTj+/YqMccVihgW4MUMusfM5AAAAAAOgAAAAAIAACAAAACkr8a6MXPr4XWQJOiamRRoZV3dKFHv55VlWpfqbz77VoAAAACUJnBS/DSopWJ6/ULinuxlocnOFB8HvD9mqVx18SddNHBdK+T0NyE2YX9T0BhUo88SH+H4dMCK80vBPVtO4JixxysPD0ow97wt7xvmHR+jlLxSjQtxgWjkM2vy0OhV2guTALgbs/LCRTVgYHk3Yf+G5LU6W1tZL+em+WXZlfZbV0AAAACBiXhT7t7ju6dwHWa+gcznrUe61vqrHYN49I88b2GL/SEbNHb1CLTfCKqGMrt8gTKaEisNxihHeUgCbNJ7Ec6p</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

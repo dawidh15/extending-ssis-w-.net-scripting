@@ -1,0 +1,45 @@
+// content of the Main() method C#
+   // Create a new table in the dataset
+            DataTable filelistTable = new DataTable();
+            // Filepath
+            filelistTable.Columns.Add("FilePath", typeof(string));
+            // Filename
+            filelistTable.Columns.Add("FileName", typeof(string));
+            //FileDate
+            filelistTable.Columns.Add("FileDate", typeof(DateTime));
+
+            // Get all files within the folder       
+            string[] allFiles = Directory.GetFiles(Dts.Variables["User::SourceFolder"].Value.ToString());
+
+            // Variable for storing file properties
+            FileInfo fileInfo;
+
+            // Loop through the files in the folder       
+            foreach (string currentFile in allFiles)
+            {
+                // Fill fileInfo variable with file information         
+                fileInfo = new FileInfo(currentFile);
+
+                // Choose which the file properties you will use
+                // Columns:            FilePath           FileName       FileDate
+                filelistTable.Rows.Add(fileInfo.FullName, fileInfo.Name, fileInfo.CreationTime);
+            }
+            IEnumerable<DataRow> query = from file in filelistTable.AsEnumerable()
+                                         orderby file.Field<DateTime>("FileDate") descending
+                                         select file;
+
+            //write the query to a DataTable with a copy 
+            // of the datarows object
+            DataTable filelistTableSorted = query.CopyToDataTable<DataRow>();
+
+
+            // Create a new sorted dataset that the SSIS foreach loop uses.
+            DataSet dsSorted = new DataSet();
+
+            //Add the table to the dataset
+            dsSorted.Tables.Add(filelistTableSorted);
+
+            // Store the dataset in the SSIS variable       
+            Dts.Variables["User::OrderedFiles"].Value = dsSorted;
+
+            Dts.TaskResult = (int)ScriptResults.Success;

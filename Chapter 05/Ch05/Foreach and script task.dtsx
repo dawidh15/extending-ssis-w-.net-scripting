@@ -1,0 +1,2796 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/5/2021 9:26:46 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PEQUE06"
+  DTS:CreatorName="PEQUE06\Asus VivoBook"
+  DTS:DTSID="{606DC646-4955-41CE-8868-BD56FAF4966D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="5130"
+  DTS:ObjectName="Foreach and script task"
+  DTS:PackageType="5"
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{52FBD35B-0F40-431B-9574-24BD1DB248D3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Archive]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{37F6E695-419A-46AF-9EEA-DDC09FC6C994}"
+      DTS:ObjectName="Archive">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="C:\localRepos\ssis_dotnet\Chapter 05\Ch05\Archive" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FlatFileCon]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{5394264B-A288-419A-A464-313AD94AFFBC}"
+      DTS:ObjectName="FlatFileCon">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::csvPath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="5130"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\localRepos\ssis_dotnet\Chapter 05\Ch05\ContentFolder\Customers.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerKey"
+              DTS:DTSID="{C2F1771C-ECCF-4D88-842B-E03341A26D34}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GeographyKey"
+              DTS:DTSID="{87746200-3807-47BF-B5E3-65A18DFBE420}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CustomerAlternateKey"
+              DTS:DTSID="{04BAA55E-070E-4085-A397-7AA7849B9CFA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Title"
+              DTS:DTSID="{13FDC7B0-422B-42F2-91C8-16692874E2F6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstName"
+              DTS:DTSID="{4EEC248C-8B8D-41AD-A436-777760CEE1F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MiddleName"
+              DTS:DTSID="{A06A54B1-8AC5-4A50-8833-BA11801568A7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LastName"
+              DTS:DTSID="{6CF7B50F-0DE4-4806-BCA8-D9DC5CC646BD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NameStyle"
+              DTS:DTSID="{34D275FF-7D35-4306-932F-FC82F53AA2BD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BirthDate"
+              DTS:DTSID="{D25232E5-B3F6-4229-A8D7-7830D26027E4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MaritalStatus"
+              DTS:DTSID="{71BCFAF2-46A8-4A23-9ACB-23B8FB14648D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Suffix"
+              DTS:DTSID="{72670C39-1ACE-40B2-BEC0-FB74710C881E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{EFECC1A8-B41B-4F2B-BF0C-7DA3B962526E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmailAddress"
+              DTS:DTSID="{0B9A107C-49FC-4280-856B-46537DEC7CFF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearlyIncome"
+              DTS:DTSID="{7E0E8EF7-6E5E-475C-8D3E-A82FAD3B7D8D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalChildren"
+              DTS:DTSID="{F18A3C19-46EA-4533-BA07-020194853AC9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NumberChildrenAtHome"
+              DTS:DTSID="{40D1E97A-BBB0-4D75-AE1A-36F51F9B0628}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EnglishEducation"
+              DTS:DTSID="{0153900C-43EA-47A7-BB2A-CCA5F043A972}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SpanishEducation"
+              DTS:DTSID="{0C12676A-3442-4A03-81C8-AA4F34A2980B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FrenchEducation"
+              DTS:DTSID="{18B9EB51-2FC7-4BBE-82E7-64EE195A5834}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EnglishOccupation"
+              DTS:DTSID="{4DD2C18A-BC26-4BCE-98D4-A6D77BD87509}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SpanishOccupation"
+              DTS:DTSID="{8F59B8A6-913C-43DC-8316-AD9F8F2414A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FrenchOccupation"
+              DTS:DTSID="{225F23A2-E9AC-4263-8AC6-D0C8A13950E7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HouseOwnerFlag"
+              DTS:DTSID="{CFB708E2-C51A-4DFA-BAB3-AA6470DE82A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NumberCarsOwned"
+              DTS:DTSID="{A98C1A2F-2809-4D19-96C0-CD4A54191B46}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddressLine1"
+              DTS:DTSID="{A0E0A5CD-9605-4CE9-AB1A-EF863F65B7CF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddressLine2"
+              DTS:DTSID="{EA686DDA-0D20-4E8C-8E96-5C7C3C667471}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Phone"
+              DTS:DTSID="{69229C2B-7059-4D16-87F4-F156E5907F91}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DateFirstPurchase"
+              DTS:DTSID="{3B413FBD-B2C3-4390-913F-D755A64981F9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CommuteDistance"
+              DTS:DTSID="{CA78FBB1-EDB4-4605-B326-F61F48EBD034}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.Apress_SSIS_scripting.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EE1DA66D-CB40-4BC7-A23D-F7BB9CABF7D8}"
+      DTS:ObjectName="localhost.Apress_SSIS_scripting.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Apress_SSIS_scripting;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{13D63711-9341-41EF-A34D-E5F2CAB08611}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="csvPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\localRepos\ssis_dotnet\Chapter 05\Ch05\ContentFolder\Customers.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4EFA3B5C-3E7A-40EA-B87B-6CD7726630A9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="folderPath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\localRepos\ssis_dotnet\Chapter 05\Ch05\ContentFolder</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F72782C6-9FED-4999-9C2A-5E0D76F66320}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="orderedFiles">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{6C1A0581-9FA3-4894-9D83-68E346D3FE55}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{6213FF86-381A-4962-9FC9-B80558746158}"
+        DTS:ObjectName="{6213FF86-381A-4962-9FC9-B80558746158}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::orderedFiles" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Archive file"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{25651274-8996-4FF1-8DFC-3B92741A033C}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Archive file"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::csvPath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="Archive" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\DFT Ordered Files"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7B3FA001-2616-4EBF-A89A-F9B3304FF87B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Ordered Files"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="5130"
+                  name="CSV Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[FlatFileCon]"
+                      connectionManagerRefId="Package.ConnectionManagers[FlatFileCon]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CustomerKey]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[CustomerKey]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CustomerKey]"
+                          name="CustomerKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[GeographyKey]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[GeographyKey]"
+                          name="GeographyKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CustomerAlternateKey]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[CustomerAlternateKey]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CustomerAlternateKey]"
+                          name="CustomerAlternateKey"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Title]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[Title]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Title]"
+                          name="Title"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FirstName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FirstName]"
+                          name="FirstName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[MiddleName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[MiddleName]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[MiddleName]"
+                          name="MiddleName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[LastName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[LastName]"
+                          name="LastName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NameStyle]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[NameStyle]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NameStyle]"
+                          name="NameStyle"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[BirthDate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[BirthDate]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[BirthDate]"
+                          name="BirthDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[MaritalStatus]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[MaritalStatus]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[MaritalStatus]"
+                          name="MaritalStatus"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Suffix]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[Suffix]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Suffix]"
+                          name="Suffix"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Gender]"
+                          name="Gender"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EmailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[EmailAddress]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EmailAddress]"
+                          name="EmailAddress"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[YearlyIncome]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[YearlyIncome]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[YearlyIncome]"
+                          name="YearlyIncome"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[TotalChildren]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[TotalChildren]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[TotalChildren]"
+                          name="TotalChildren"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NumberChildrenAtHome]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[NumberChildrenAtHome]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NumberChildrenAtHome]"
+                          name="NumberChildrenAtHome"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EnglishEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[EnglishEducation]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EnglishEducation]"
+                          name="EnglishEducation"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[SpanishEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[SpanishEducation]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[SpanishEducation]"
+                          name="SpanishEducation"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FrenchEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[FrenchEducation]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FrenchEducation]"
+                          name="FrenchEducation"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EnglishOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[EnglishOccupation]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EnglishOccupation]"
+                          name="EnglishOccupation"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[SpanishOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[SpanishOccupation]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[SpanishOccupation]"
+                          name="SpanishOccupation"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FrenchOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[FrenchOccupation]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FrenchOccupation]"
+                          name="FrenchOccupation"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[HouseOwnerFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[HouseOwnerFlag]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[HouseOwnerFlag]"
+                          name="HouseOwnerFlag"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NumberCarsOwned]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[NumberCarsOwned]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NumberCarsOwned]"
+                          name="NumberCarsOwned"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[AddressLine1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[AddressLine1]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[AddressLine1]"
+                          name="AddressLine1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[AddressLine2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[AddressLine2]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[AddressLine2]"
+                          name="AddressLine2"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Phone]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[Phone]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Phone]"
+                          name="Phone"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[DateFirstPurchase]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[DateFirstPurchase]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[DateFirstPurchase]"
+                          name="DateFirstPurchase"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CommuteDistance]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[CommuteDistance]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CommuteDistance]"
+                          name="CommuteDistance"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[CustomerKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerKey" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="GeographyKey" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[CustomerAlternateKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerAlternateKey" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[Title]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Title" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FirstName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[MiddleName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="MiddleName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="LastName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[NameStyle]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NameStyle" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[BirthDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BirthDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[MaritalStatus]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="MaritalStatus" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[Suffix]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Suffix" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Gender" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[EmailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EmailAddress" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[YearlyIncome]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="YearlyIncome" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[TotalChildren]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TotalChildren" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[NumberChildrenAtHome]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NumberChildrenAtHome" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[EnglishEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EnglishEducation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[SpanishEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SpanishEducation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[FrenchEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FrenchEducation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[EnglishOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EnglishOccupation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[SpanishOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SpanishOccupation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[FrenchOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FrenchOccupation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[HouseOwnerFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="HouseOwnerFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[NumberCarsOwned]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NumberCarsOwned" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[AddressLine1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AddressLine1" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[AddressLine2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AddressLine2" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[Phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Phone" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[DateFirstPurchase]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DateFirstPurchase" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].ExternalColumns[CommuteDistance]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CommuteDistance" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Customer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[localhost.Apress_SSIS_scripting.sa]"
+                      connectionManagerRefId="Package.ConnectionManagers[localhost.Apress_SSIS_scripting.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CustomerKey"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CustomerKey]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[GeographyKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="GeographyKey"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[GeographyKey]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerAlternateKey]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CustomerAlternateKey"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAlternateKey]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CustomerAlternateKey]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Title]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Title"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Title]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FirstName"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FirstName]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MiddleName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="MiddleName"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[MiddleName]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LastName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="LastName"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[LastName]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NameStyle]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NameStyle"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NameStyle]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NameStyle]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="BirthDate"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[BirthDate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="MaritalStatus"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[MaritalStatus]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Suffix]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Suffix"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Suffix]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Suffix]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Gender"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Gender]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EmailAddress]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="EmailAddress"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EmailAddress]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YearlyIncome]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="YearlyIncome"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YearlyIncome]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[YearlyIncome]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalChildren]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="TotalChildren"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalChildren]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[TotalChildren]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumberChildrenAtHome]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NumberChildrenAtHome"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberChildrenAtHome]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NumberChildrenAtHome]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EnglishEducation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="EnglishEducation"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EnglishEducation]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EnglishEducation]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SpanishEducation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SpanishEducation"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SpanishEducation]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[SpanishEducation]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FrenchEducation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FrenchEducation"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FrenchEducation]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FrenchEducation]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EnglishOccupation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="EnglishOccupation"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EnglishOccupation]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[EnglishOccupation]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SpanishOccupation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SpanishOccupation"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SpanishOccupation]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[SpanishOccupation]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FrenchOccupation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FrenchOccupation"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FrenchOccupation]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[FrenchOccupation]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HouseOwnerFlag]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="HouseOwnerFlag"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HouseOwnerFlag]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[HouseOwnerFlag]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumberCarsOwned]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NumberCarsOwned"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberCarsOwned]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[NumberCarsOwned]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AddressLine1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="AddressLine1"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AddressLine1]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[AddressLine1]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AddressLine2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="AddressLine2"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AddressLine2]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[AddressLine2]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Phone]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Phone"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[Phone]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateFirstPurchase]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DateFirstPurchase"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFirstPurchase]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[DateFirstPurchase]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CommuteDistance]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CommuteDistance"
+                          externalMetadataColumnId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CommuteDistance]"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output].Columns[CommuteDistance]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerKey" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="GeographyKey" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAlternateKey]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerAlternateKey" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Title" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FirstName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="MiddleName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="LastName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NameStyle]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NameStyle" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="BirthDate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="MaritalStatus" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Suffix]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Suffix" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Gender" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EmailAddress" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YearlyIncome]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="YearlyIncome" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalChildren]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="TotalChildren" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberChildrenAtHome]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NumberChildrenAtHome" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EnglishEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EnglishEducation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SpanishEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SpanishEducation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FrenchEducation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FrenchEducation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EnglishOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="EnglishOccupation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SpanishOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SpanishOccupation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FrenchOccupation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FrenchOccupation" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HouseOwnerFlag]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="HouseOwnerFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberCarsOwned]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NumberCarsOwned" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AddressLine1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AddressLine1" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AddressLine2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="AddressLine2" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Phone" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFirstPurchase]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DateFirstPurchase" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CommuteDistance]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CommuteDistance" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SourceFile]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SourceFile" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                          dataType="i4"
+                          name="ID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\DFT Ordered Files.Paths[Flat File Source Output]"
+                  endId="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach Loop Container\DFT Ordered Files\CSV Source.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\INSERT INTO LogFileLoad"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F288E688-3BCE-4F20-B057-920AF63147D3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="INSERT INTO LogFileLoad"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{EE1DA66D-CB40-4BC7-A23D-F7BB9CABF7D8}"
+              SQLTask:SqlStatementSource="INSERT INTO dbo.FileLoadLog (FilePath, LoadDateTime) &#x9;VALUES&#x9;(?, getdate());" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::csvPath"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="4000" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BF146F62-E36A-47F9-9E1A-1C5E46F06A76}"
+          DTS:From="Package\Foreach Loop Container\DFT Ordered Files"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\Archive file" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{6A7882C4-3633-4FD4-8189-35EE053209BD}"
+          DTS:From="Package\Foreach Loop Container\Archive file"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\INSERT INTO LogFileLoad" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{D97C69B0-E445-45ED-A02B-FA6B90612DF2}"
+          DTS:ObjectName="{D97C69B0-E445-45ED-A02B-FA6B90612DF2}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::csvPath" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{758DA746-9CFD-4D5D-9F92-4EB93780306A}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_7b51853456154173bc53558fe86d65c1"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::folderPath"
+          ReadWriteVariables="User::orderedFiles">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_7b51853456154173bc53558fe86d65c1")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_7b51853456154173bc53558fe86d65c1")]
+[assembly: AssemblyCopyright("Copyright @  2021")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.IO;
+#endregion
+
+namespace ST_7b51853456154173bc53558fe86d65c1
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+        /// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+        public void Main()
+        {
+            // Add a new data set to hold info about files
+            DataSet dsUnsorted = new DataSet();
+
+            // Create a table into the data set
+            DataTable fileListTable = dsUnsorted.Tables.Add();
+            fileListTable.Columns.Add("FilePath", typeof(string));
+            fileListTable.Columns.Add("FileName", typeof(string));
+            fileListTable.Columns.Add("FileDate", typeof(DateTime));
+
+            // Load file paths in array
+            string[] allFiles = Directory.GetFiles(Dts.Variables["User::folderPath"].Value.ToString());
+
+            // Add file info into the table
+            foreach (var file in allFiles)
+            {
+                FileInfo fileInfo = new FileInfo(file);
+
+                fileListTable.Rows.Add(
+                    fileInfo.FullName
+                    , fileInfo.Name
+                    , fileInfo.LastWriteTime
+                    );
+            }
+
+            // Define new set of rows, based on select statement which orders by Date
+            DataRow[] rows = dsUnsorted.Tables[0].Select("FileName like '*.csv'", "FileDate ASC");
+
+            // Create new Data set for sorted files
+            DataSet dsSorted = new DataSet();
+            DataTable fileListTableSorted = dsSorted.Tables.Add();
+            fileListTableSorted.Columns.Add("FilePath", typeof(string));
+
+            // Add sorted rows to the new data set
+            foreach (DataRow row in rows)
+            {
+                fileListTableSorted.Rows.Add(row["FilePath"].ToString());
+            }
+
+            // Write the result into orderedFiles variable
+            Dts.Variables["User::orderedFiles"].Value = dsSorted;
+
+			Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_7b51853456154173bc53558fe86d65c1</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_7b51853456154173bc53558fe86d65c1</msb:DisplayName>
+    <msb:ProjectId>{0CAE4E6D-DCBA-487F-B675-9105CBF8B7E8}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_7b51853456154173bc53558fe86d65c1.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_7b51853456154173bc53558fe86d65c1.Properties.Settings.get_Default():ST_7b51853456154173bc53558fe86d65c1.Properties.Sett" +
+    "ings")]
+
+namespace ST_7b51853456154173bc53558fe86d65c1.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_7b51853456154173bc53558fe86d65c1.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{83ae59a4-ee17-4884-a00d-89f56f70f1c3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_7b51853456154173bc53558fe86d65c1</RootNamespace>
+    <AssemblyName>ST_7b51853456154173bc53558fe86d65c1</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptTask" GeneratedNamespace="$safeprojectname" IconIndex=""></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_7b51853456154173bc53558fe86d65c1.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_7b51853456154173bc53558fe86d65c1.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_7b51853456154173bc53558fe86d65c1.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_7b51853456154173bc53558fe86d65c1.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_7b51853456154173bc53558fe86d65c1.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_7b51853456154173bc53558fe86d65c1.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDABmkHWAAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAsjEA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAGAxAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAuBEAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACU
+MQAAAAAAAEgAAAACAAUAVCIAAFQOAAABAAAAAAAAAKgwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwBgCPAQAAAQAAEXMQAAAKCgZvEQAACm8SAAAKCwdvEwAA
+CnIBAABw0B4AAAEoFAAACm8VAAAKJgdvEwAACnITAABw0B4AAAEoFAAACm8VAAAKJgdvEwAACnIl
+AABw0CIAAAEoFAAACm8VAAAKJgIoFgAACm8XAAAKcjcAAHBvGAAACm8ZAAAKbxoAAAooGwAAChME
+FhMFK0cRBBEFmnMcAAAKEwYHbx0AAAoZjRUAAAElFhEGbx4AAAqiJRcRBm8fAAAKoiUYEQZvIAAA
+CowiAAABom8hAAAKJhEFF1gTBREFEQSOaTKxBm8RAAAKFm8iAAAKclkAAHByhQAAcG8jAAAKcxAA
+AAoMCG8RAAAKbxIAAAoNCW8TAAAKcgEAAHDQHgAAASgUAAAKbxUAAAomEwcWEwUrMxEHEQWaEwgJ
+bx0AAAoXjRUAAAElFhEIcgEAAHBvJAAACm8aAAAKom8hAAAKJhEFF1gTBREFEQeOaTLFAigWAAAK
+bxcAAApynwAAcG8YAAAKCG8lAAAKAigWAAAKFm8mAAAKKh4CKCcAAAoqHgIoKAAACiqufgEAAAQt
+HnLFAABw0AMAAAIoFAAACm8pAAAKcyoAAAqAAQAABH4BAAAEKhp+AgAABCoeAoACAAAEKhp+AwAA
+BCoeAigrAAAKKi5zCAAABoADAAAEKgAAAEJTSkIBAAEAAAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUA
+bAAAAHgEAAAjfgAA5AQAAGQGAAAjU3RyaW5ncwAAAABICwAAOAEAACNVUwCADAAAEAAAACNHVUlE
+AAAAkAwAAMQBAAAjQmxvYgAAAAAAAAACAAABVx2iAQkDAAAA+gEzABYAAAEAAAApAAAABQAAAAYA
+AAAJAAAAAQAAACsAAAACAAAAEAAAAAEAAAACAAAAAwAAAAQAAAABAAAABQAAAAEAAAABAAAAAADU
+AwEAAAAAAAYAegICBQYACQMCBQYAxgHvBA8AdgUAAAYA8wFdBAYAXQJdBAYAPgJdBAYA8AJdBAYA
+mgJdBAYAswJdBAYACgJdBAYAJQJBAwoAzgKDAwoARQGDAw4AIAZfAA4AiABfAAYAqgQuAA4AQwZf
+AAYADAQFBAYAqQHvBAYAEgYFBAYA0gQiBQYAswRIBBIAeQG+AxIA2gG+AxIAYQEzBAYAjgECBQ4A
+bwRfAA4AgwRfAAYAXQMFBAYAEAEFBAYAmwAFBA4AKARfAAYA1QAFBAoArAODAxYAwwXwABYAkgDw
+AAYAWAYuAA4AmARfAAYAvwQuAAYATwZdBAAAAAAlAAAAAAABAAEAAQAQAB0EAQA5AAEAAQAAABAA
+KQWFBVUAAQADAAABEADWBYUFaQADAAcAAwEAAPsFAABNAAQACgARABEExgARADUBygARAHgAzgAG
+BlcA0gBWgOsF1QBWgBUB1QBQIAAAAACGACMEBgABAOshAAAAAIYY4gQGAAEA8yEAAAAAgxjiBAYA
+AQD7IQAAAACTCM4E2QABACciAAAAAJMIHQHeAAEALiIAAAAAkwgpAeMAAQA2IgAAAACWCCgG6QAC
+AD0iAAAAAIYY4gQGAAIARSIAAAAAkRjoBO4AAgAAAAEAOwMJAOIEAQARAOIEBgAZAOIECgApAOIE
+EAAxAOIEEAA5AOIEEABBAOIEEABJAOIEEABRAOIEEABZAOIEEABhAOIEEABpAOIEBgChAOIEBgDJ
+AOIEFQDZAOIEBgB5AOIEBgB5ALQFMADhAHQANQCBAN8FOgD5AK0APwDpAHQARwBxAPMFUAAZAb8F
+VgAhAfwDXAApAScDYwCpAFsDZwAxAc0FawCJAOIEEACBAAkGcQBBAcgAZwBBAb8AZwBBAd4AdwA5
+AXQAfQDhAPwDhACBABkGigCRAPwDkgApATEDlwAZATQGAQBxAOIEBgCpAOIEBgD5AEsGnACxAOIE
+ogDRAOIEBgAIABQAvAAIABgAwQApAHMAKQEuAAsAAQEuABMACgEuABsAKQEuACMAMgEuACsAWwEu
+ADMAWwEuADsAWwEuAEMAMgEuAEsAYQEuAFMAWwEuAFsAeAFDAGMAwQBJAHMAKQFhAHsAwQBjAGsA
+wQAbAAMAAQAEAAMAAADSBPIAAAA9AfcAAAAsBvwAAgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAA
+AAEAAAAaHpxiAAAAAAAAAQAAAAQAAAAAAAAAAAAAAKoAawAAAAAADwAAAAAAAAAAAAAAswBkAwAA
+AAAEAAAAAAAAAAAAAACqAF8AAAAAAAQAAAAAAAAAAAAAAKoABQQAAAAADwAAAAAAAAAAAAAAswA4
+AAAAAAAAAAAAAQAAADMFAAAFAAIAAAAAU1RfN2I1MTg1MzQ1NjE1NDE3M2JjNTM1NThmZTg2ZDY1
+YzEAPE1vZHVsZT4AU3lzdGVtLklPAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwB2YWx1
+ZV9fAFN5c3RlbS5EYXRhAG1zY29ybGliAEFkZABkZWZhdWx0SW5zdGFuY2UARGF0YVRhYmxlAFZh
+cmlhYmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAGdldF9OYW1lAGdldF9G
+dWxsTmFtZQBEYXRlVGltZQBnZXRfTGFzdFdyaXRlVGltZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0
+cy5SdW50aW1lAFR5cGUARmFpbHVyZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1
+bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNl
+AEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2Vy
+Tm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVB
+dHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0
+ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRl
+AEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJp
+YnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUA
+U1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0
+ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBnZXRfVmFsdWUAc2V0X1ZhbHVlAHZhbHVl
+AFN5c3RlbS5SdW50aW1lLlZlcnNpb25pbmcAVG9TdHJpbmcATWljcm9zb2Z0LlNxbFNlcnZlci5T
+Y3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sAU2NyaXB0
+T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNUXzdiNTE4NTM0NTYxNTQxNzNiYzUz
+NTU4ZmU4NmQ2NWMxLmRsbABnZXRfSXRlbQBTeXN0ZW0ARW51bQByZXNvdXJjZU1hbgBTY3JpcHRN
+YWluAERhdGFDb2x1bW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24A
+U3lzdGVtLlJlZmxlY3Rpb24ARGF0YVRhYmxlQ29sbGVjdGlvbgBEYXRhQ29sdW1uQ29sbGVjdGlv
+bgBEYXRhUm93Q29sbGVjdGlvbgBGaWxlSW5mbwBDdWx0dXJlSW5mbwBGaWxlU3lzdGVtSW5mbwBn
+ZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVt
+LlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUXzdiNTE4NTM0NTYx
+NTQxNzNiYzUzNTU4ZmU4NmQ2NWMxLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1
+Z2dpbmdNb2RlcwBTVF83YjUxODUzNDU2MTU0MTczYmM1MzU1OGZlODZkNjVjMS5Qcm9wZXJ0aWVz
+AGdldF9UYWJsZXMAZ2V0X1ZhcmlhYmxlcwBHZXRGaWxlcwBTZXR0aW5ncwBnZXRfQ29sdW1ucwBT
+dWNjZXNzAGdldF9EdHMAU2NyaXB0UmVzdWx0cwBnZXRfUm93cwBPYmplY3QAU2VsZWN0AERhdGFT
+ZXQAZ2V0X0RlZmF1bHQAc2V0X1Rhc2tSZXN1bHQARGF0YVJvdwBnZXRfQXNzZW1ibHkARGlyZWN0
+b3J5AAAAABFGAGkAbABlAFAAYQB0AGgAABFGAGkAbABlAE4AYQBtAGUAABFGAGkAbABlAEQAYQB0
+AGUAACFVAHMAZQByADoAOgBmAG8AbABkAGUAcgBQAGEAdABoAAArRgBpAGwAZQBOAGEAbQBlACAA
+bABpAGsAZQAgACcAKgAuAGMAcwB2ACcAARlGAGkAbABlAEQAYQB0AGUAIABBAFMAQwAAJVUAcwBl
+AHIAOgA6AG8AcgBkAGUAcgBlAGQARgBpAGwAZQBzAABxUwBUAF8ANwBiADUAMQA4ADUAMwA0ADUA
+NgAxADUANAAxADcAMwBiAGMANQAzADUANQA4AGYAZQA4ADYAZAA2ADUAYwAxAC4AUAByAG8AcABl
+AHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAAWHG//PBESkyjaXhjBIoreAAEIAEBCAMg
+AAEFIAEBEREEIAEBDgUgAQERYRQHCRI9EkESPRJBHQ4IEkUdEkkSSQQgABJxBCAAEkEEIAASdQcA
+ARJ9EYCBCCACEoCFDhJ9BSAAEoCNBSAAEoCRBiABEoCVHAMgABwDIAAOBQABHQ4OBSAAEoCdBSAA
+EYCJBiABEkkdHAUgARJBCAcgAh0SSQ4OBCABHA4EIAEBHAUgABKApQcgAgEOEoClCLd6XFYZNOCJ
+CImEXc2AgMyRBAAAAAAEAQAAAAMGElkDBhJdAwYSEAIGCAMGERQEAAASWQQAABJdBQABARJdBAAA
+EhADAAABBAgAElkECAASXQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhy
+b3dzAQgBAAIAAAAAACgBACNTVF83YjUxODUzNDU2MTU0MTczYmM1MzU1OGZlODZkNjVjMQAABQEA
+AAAAFgEAEUNvcHlyaWdodCBAICAyMDIxAABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcB
+AFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwAAtAAAAM7K774BAAAA
+kQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00
+LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkj
+U3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAA
+AIgxAAAAAAAAAAAAAKIxAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAACUMQAAAAAAAAAAAAAAAF9D
+b3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAJxiGh4AAAEAnGIaHj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8ANwBiADUAMQA4ADUAMwA0ADUANgAxADUANAAxADcAMwBiAGMANQAzADUANQA4AGYA
+ZQA4ADYAZAA2ADUAYwAxAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADcANwAwADYALgAyADUAMgA0ADQAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8ANwBiADUAMQA4ADUAMwA0ADUANgAxADUANAAxADcAMwBiAGMANQAzADUANQA4AGYAZQA4
+ADYAZAA2ADUAYwAxAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADEAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwA3AGIANQAxADgANQAzADQANQA2ADEANQA0ADEANwAzAGIAYwA1ADMANQA1
+ADgAZgBlADgANgBkADYANQBjADEALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8ANwBiADUAMQA4ADUAMwA0ADUANgAxADUANAAxADcAMwBiAGMANQAzADUANQA4
+AGYAZQA4ADYAZAA2ADUAYwAxAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA3ADcAMAA2AC4AMgA1ADIANAA0AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA3ADcAMAA2AC4AMgA1ADIANAA0AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAALQxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE Customer and FileLoadLog tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{688D4047-9516-447B-8575-9869E86907B7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE Customer and FileLoadLog tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EE1DA66D-CB40-4BC7-A23D-F7BB9CABF7D8}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Customer;&#xA;TRUNCATE TABLE dbo.FileLoadLog;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7B6DC995-A040-41E4-A8CB-4F03030E0F7B}"
+      DTS:From="Package\Script Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Foreach Loop Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E59D53D4-FFBE-4A79-9E10-3E286A91452A}"
+      DTS:From="Package\TRUNCATE Customer and FileLoadLog tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Script Task"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Foreach Loop Container\Archive file"
+          TopLeft="113,105" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Foreach Loop Container\DFT Ordered Files"
+          TopLeft="98,19" />
+        <NodeLayout
+          Size="212,44"
+          Id="Package\Foreach Loop Container\INSERT INTO LogFileLoad"
+          TopLeft="70,196" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="181.25,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.9932421875,13.47314453125,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="177.75,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.9932421875,15.97314453125,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="348,302"
+          Size="348,345"
+          Id="Package\Foreach Loop Container"
+          TopLeft="65,94" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Script Task"
+          TopLeft="178,21" />
+        <NodeLayout
+          Size="170,63"
+          Id="Package\TRUNCATE Customer and FileLoadLog tables"
+          TopLeft="460,23" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="242,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.9932421875,6.97314453125,35.986484375,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="460,54.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-148,-12.5"
+              Start="0,0"
+              End="-140.5,-12.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-70,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-70,0"
+                    Point2="-74,0"
+                    Point3="-74,-4" />
+                  <mssgle:LineSegment
+                    End="-74,-8.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74,-8.5"
+                    Point2="-74,-12.5"
+                    Point3="-78,-12.5" />
+                  <mssgle:LineSegment
+                    End="-140.5,-12.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.304453125,1,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="El archivo Customers.csv original estaba separado por ; no por ,&#xD;&#xA;Esto generó muchos errores. Hubo que reemplazarlo.&#xD;&#xA;&#xD;&#xA;Además, se cambió en las propiedades del FlatFileConn, que el Connectrion String&#xD;&#xA;fuera dinámico, y se sustituyera por User::csvPath"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="499,110"
+          Id="7ed3f835-a13c-45ba-af42-de54211fa156"
+          TopLeft="431,260" />
+        <AnnotationLayout
+          Text="El script genera un ADO Recordet con las rutas de los archivos&#xD;&#xA;ordenados de manera ascendente según la fecha de modificación.&#xD;&#xA;En cada loop, la variable User::csvPath, se reemplaza por el path del archivo&#xD;&#xA;de este Recordet. De manera que los archivos se ingresan a la base&#xD;&#xA; de datos desde el más antiguo al más reciente (Fecha de modificación)"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="459,110"
+          Id="506a79ac-e416-45af-8320-4922e22ecdd0"
+          TopLeft="426,108" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\DFT Ordered Files">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Foreach Loop Container\DFT Ordered Files\CSV Source"
+          TopLeft="139,21" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination"
+          TopLeft="121,121" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\DFT Ordered Files.Paths[Flat File Source Output]"
+          TopLeft="209,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\DFT Ordered Files\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

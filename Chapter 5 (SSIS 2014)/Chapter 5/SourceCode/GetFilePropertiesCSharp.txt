@@ -1,0 +1,101 @@
+//Get the file from the variable
+            String strFilePath = Dts.Variables["FileName"].Value.ToString();
+            //Get the date from the variable
+            DateTime dateToCheck = Convert.ToDateTime(Dts.Variables["DateToCheck"].Value);
+
+
+            //Check for file existence
+            if (File.Exists(strFilePath))
+            {
+                //Get file informations
+                FileInfo objFileInfo = new FileInfo(strFilePath);
+
+                //Get the creation time
+                DateTime createdTime = objFileInfo.CreationTime;
+
+                // What is the length (in bytes) of the file
+                long FileLength = objFileInfo.Length;
+
+                //Gets the name of the file (with the extension)
+                string fileName = objFileInfo.Name;
+                
+                //Get the directory
+                string Directory = objFileInfo.Directory.Name;
+
+                //Get the path and the name of the file
+                string PathAndName = objFileInfo.FullName;
+                
+                //Get the extension for the file
+                string Extension = objFileInfo.Extension;
+
+                //is the file Read Only?
+                bool isReadOnly = objFileInfo.IsReadOnly;
+
+                //When was the file opened for the last time (and date) 
+                DateTime lastAccessTime = objFileInfo.LastAccessTime;
+
+                //When was the file written for the last time (and date)
+                DateTime lastWriteTime = objFileInfo.LastWriteTime;
+
+                //gets the owner
+                string owner = System.IO.File.GetAccessControl(strFilePath).GetOwner(typeof(System.Security.Principal.NTAccount)).ToString();
+
+
+                MessageBox.Show("Creation time: " + createdTime.ToString() + Environment.NewLine + 
+                    "Directory: " +Directory + Environment.NewLine +
+                    "Owner: " + owner + Environment.NewLine + 
+                    "Extension: " + Extension + Environment.NewLine + 
+                    "PathName: " + PathAndName + Environment.NewLine + 
+                    "is file ReadOnly: " + isReadOnly.ToString() + Environment.NewLine +
+                    "last accessed: " + lastAccessTime.ToString() + Environment.NewLine +
+                    "last written: " + lastWriteTime.ToString() + Environment.NewLine +
+                    "Length (in Bytes): " + FileLength.ToString() + Environment.NewLine + 
+                    "File name: " + fileName,"Some of the file Properties");
+
+                //Is the file modified today
+                if (objFileInfo.LastWriteTime.Date == dateToCheck.Date)
+                {
+                    // MessageBox.Show("File " + strFilePath + " was modified today");
+                }
+                else
+                {
+                    // MessageBox.Show("File " + strFilePath + " was modified " + objFileInfo.LastWriteTime.ToShortDateString());
+                }
+
+                //Read the content of the file in a StreamReader
+                StreamReader myReader = new StreamReader(strFilePath);
+                //Read all the content in one go into the variable
+                Dts.Variables["FileContent"].Value = myReader.ReadToEnd();
+                //Remember to close the reader
+                myReader.Close();
+
+                //Assign the modified date to the variable
+                Dts.Variables["FileModifiedDate"].Value = objFileInfo.LastWriteTime;
+
+                //This variable will contain all the properties
+                string allProps = "";
+
+                //Get type of the object to examine its metadata
+                Type t = objFileInfo.GetType();
+
+                //Get the object properties
+                PropertyInfo[] props = t.GetProperties();
+
+                foreach (PropertyInfo prp in props)
+                {
+                    //Iteration over the properties
+                    object value = prp.GetValue(objFileInfo, new object[] { });
+                    //Save the name and value of each property in the string
+                    allProps += prp.Name + "=" + value.ToString() + "," + 					    Environment.NewLine;
+                }
+
+                //Clean the string to remove the last ","
+                allProps = allProps.Substring(0, allProps.Length - 2);
+
+                //Assign the string to our variable
+                Dts.Variables["FileProperties"].Value = allProps;
+
+                //show the content of the variable
+                //MessageBox.Show(allProps);
+
+            }

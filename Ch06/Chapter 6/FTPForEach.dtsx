@@ -1,0 +1,104 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/19/2014 4:17:51 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="LAP004191"
+  DTS:CreatorName="ILIONX\jvanrossum"
+  DTS:DTSID="{5CF722C7-D6F3-40CD-B67F-F5FB191E037A}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="1043"
+  DTS:ObjectName="FTPForEach"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{7029539B-C8FF-42C2-9177-0C87B9D3DF10}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ftp]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{14722A45-9552-4C28-81A8-EC5CA5D42C69}"
+      DTS:ObjectName="ftp">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="D:\ftp" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FTP Connection Manager]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{CD50E0B8-658E-42F2-95F0-29AF3DFE81CA}"
+      DTS:ObjectName="FTP Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ServerPassword">@[$Package::Password]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="ftp.appartementennoordwijk.nl:21">
+          <DTS:FtpConnection
+            DTS:ServerName="ftp.appartementennoordwijk.nl"
+            DTS:ServerUserName="appartementennoordwi">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjPuJIh0GpUKcNk8l101IFAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA1Op2SyIAsG42xk3YmYf2l/Crjf1So2bE35fZKruenTQAAAAAOgAAAAAIAACAAAABD7svFLhjgAWtYrguRKEPXX5lgsPoOSAtxJAYz6IKh1hAAAADdYOQdd/0YvW1SYZ0KEpULQAAAAGhEn0aeIKJhIwuWEx38eTTkTQDK5n1NqUP8wp7RiuuN+h+PXT90jv+NhjdlLMjbaZWblTi4nb+GizrvcTOK9bc</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{D7C37C47-5176-44BA-8216-66858A34B4A8}"
+      DTS:ObjectName="Password"
+      DTS:Required="True"
+      DTS:Sensitive="True">
+      <DTS:Property
+        DTS:Name="ParameterValue">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="ParameterValue"
+          Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjPuJIh0GpUKcNk8l101IFAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACrHnGf4B4vy9wJFeF6NhBO2wH/GAPN9yq4iSCv747yIwAAAAAOgAAAAAIAACAAAADGNXQikc5Z70p12rCJ8xdwRcuoz+Ho2x5ohhFYADufsBAAAACNOnImNj61MntUszrhK3g8QAAAAFFk84xiWAst6VCxzk0JU8LJ7h1GE1mCwQEtQXCbbw8SkMlL8wYR62K/KkBRC17KsltQBGlfx3tUdMm1+UFY8xA</DTS:Property>
+      </DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{79F5D124-68B8-4E31-9D79-56FD468AE4DD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <AnnotationLayout
+          Text="optional script: http://microsoft-ssis.blogspot.com/2011/08/foreach-ftp-file-enumerator.html"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="519,59"
+          Id="85ef2359-7f8c-4843-aea1-5816d49397f6"
+          TopLeft="283.428576255331,130.305884180432" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

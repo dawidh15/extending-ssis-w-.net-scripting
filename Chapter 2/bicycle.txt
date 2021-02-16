@@ -1,0 +1,7 @@
+Bicycle
+Mountainbike
+Tricycle
+City bike
+BMX
+Unicycle
+Racing bike
