@@ -1,0 +1,6 @@
+INSERT INTO [dbo].[Chapter11] ([FirstName], [LastName], [YearlyIncome]) VALUES (N'Leonardo', N'Mc Cormick', 145872)
+INSERT INTO [dbo].[Chapter11] ([FirstName], [LastName], [YearlyIncome]) VALUES (N'Josh', N'Cortez', 292927)
+INSERT INTO [dbo].[Chapter11] ([FirstName], [LastName], [YearlyIncome]) VALUES (N'Andres', N'Wall', 318002)
+INSERT INTO [dbo].[Chapter11] ([FirstName], [LastName], [YearlyIncome]) VALUES (N'Leonard', N'Chambers', 255004)
+INSERT INTO [dbo].[Chapter11] ([FirstName], [LastName], [YearlyIncome]) VALUES (N'Miguel', N'Kelly', 71128)
+INSERT INTO [dbo].[Chapter11] ([FirstName], [LastName], [YearlyIncome]) VALUES (N'Jerry', N'Fox', 180525)

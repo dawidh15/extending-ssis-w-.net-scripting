@@ -1,0 +1,8 @@
+TextNumber
+1
+42
+3
+4
+Hello world!
+7
+I love SSIS
